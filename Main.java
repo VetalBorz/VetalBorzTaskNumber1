@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-//Игра висилица!!!!!!
+//Игра висилица!!!!!!----
 
 public class Main {
     public static void main(String[] args) {
