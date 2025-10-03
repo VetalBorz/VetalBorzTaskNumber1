@@ -13,10 +13,10 @@ public class Main {
         word = word.toUpperCase();
 
         Set<Character> guessed = new HashSet<>();
-        int attemptsLeft = 100; // Количество жизней
+        int attemptsLeft = 6; // Количество жизней
 
-        output("=== Игра Виселица ===");
-        output("Угадай слово по буквам!");
+        System.out.println("=== Игра Виселица ===");
+        System.out.println("Угадай слово по буквам!");
 
         while (attemptsLeft > 0) {
             // Печатаем текущее состояние
@@ -30,49 +30,43 @@ public class Main {
                     allGuessed = false;
                 }
             }
-            output("\nСлово: " + display);
+            System.out.println("\nСлово: " + display);
 
             if (allGuessed) {
-                output("🎉 Поздравляем! Ты угадал слово!");
+                System.out.println("🎉 Поздравляем! Ты угадал слово!");
                 return;
             }
 
-            output("Осталось попыток: " + attemptsLeft);
+            System.out.println("Осталось попыток: " + attemptsLeft);
             System.out.print("Введи букву: ");
             String input = sc.nextLine().trim().toUpperCase();
 
             if (input.isEmpty()) {
-                output("❌ Введи хотя бы одну букву!");
+                System.out.println("❌ Введи хотя бы одну букву!");
                 continue;
             }
 
             char guess = input.charAt(0);
             if (!Character.isLetter(guess)) {
-                output("❌ Нужно ввести букву!");
+                System.out.println("❌ Нужно ввести букву!");
                 continue;
             }
 
             if (guessed.contains(guess)) {
-                output("⚠️ Буква уже называлась.");
-                attemptsLeft--;
+                System.out.println("⚠️ Буква уже называлась.");
                 continue;
             }
 
             guessed.add(guess);
 
             if (word.indexOf(guess) >= 0) {
-               output("✅ Верно!");
-                attemptsLeft--;
+                System.out.println("✅ Верно!");
             } else {
-                output("❌ Такой буквы нет.");
+                System.out.println("❌ Такой буквы нет.");
                 attemptsLeft--;
             }
         }
 
-        output("\n☠️ Ты проиграл! Загаданное слово было: " + word);
-    }
-    public static void output(String word) {
-       // StringBuilder output = new StringBuilder(word);
-        System.out.println(word);
+        System.out.println("\n☠️ Ты проиграл! Загаданное слово было: " + word);
     }
 }
